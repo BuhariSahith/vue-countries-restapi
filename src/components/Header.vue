@@ -1,5 +1,5 @@
 <template>
-  <header class="shadow-xl h-24 fixed w-full">
+  <header class="shadow-xl h-24 w-full">
     <div class="flex justify-between p-8">
       <h1 class="font-bold text-2xl">Countries</h1>
       <div class="flex cursor-pointer" @click="toggleTheme">
