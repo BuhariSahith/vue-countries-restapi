@@ -29,18 +29,21 @@
     </div>
 
     <div class="home_content">
-      <Card :countries="filteredCountries"> </Card>
+      <CountryCard :countries="filteredCountries"> </CountryCard>
     </div>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import CountryCard from "../components/CountryCard.vue";
 import _ from "lodash";
 export default {
   name: "HomePage",
 
-  components: {},
+  components: {
+    CountryCard,
+  },
 
   data() {
     return {
@@ -81,6 +84,19 @@ export default {
   computed: {
     // console.log("computed");
     ...mapGetters("countries", ["getAllcountries"]),
+    filteredCountries() {
+      if (this.searchTerm) {
+        return _.filter(this.getAllcountries, (country) => {
+          return country.name.common.toLowerCase().includes(this.searchTerm);
+        });
+      } else if (this.selectedRegion) {
+        return _.filter(this.getAllcountries, (country) => {
+          return country.region === this.selectedRegion;
+        });
+      } else {
+        return this.getAllcountries;
+      }
+    },
   },
 
   methods: {
