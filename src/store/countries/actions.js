@@ -13,9 +13,9 @@ export async function getCountries({ commit }) {
 
 export async function getSingleCountry({ commit }, countryName) {
   try {
-    const response = await axios.get(`${API_URL}/${countryName}`);
+    const response = await axios.get(`${API_URL}/name/${countryName}`);
     commit("setSingleCountry", response.data[0]);
-    return response;
+    return response.data[0];
   } catch (err) {
     console.log(err);
   }

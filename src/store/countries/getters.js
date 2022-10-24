@@ -2,6 +2,6 @@ export function getAllcountries(state) {
   return state.countries;
 }
 
-export function getSingleCountry(state) {
+export function getSingleCountryObject(state) {
   return state.singleCountry;
 }
