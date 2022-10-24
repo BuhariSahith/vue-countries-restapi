@@ -17,7 +17,7 @@ const Store = createStore({
     countries,
   },
   strict: debug,
-  plugins: debug ? [createLogger()] : []
+  plugins: debug ? [createLogger()] : [],
 });
 
 export default Store;
