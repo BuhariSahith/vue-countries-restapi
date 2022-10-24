@@ -1,6 +1,11 @@
 <template>
   <div class="country-container">
-    <div class="card" v-for="country in countries" :key="country">
+    <div
+      class="card"
+      v-for="country in countries"
+      :key="country.name.common"
+      @click="showEnhancedDetail(country.name.common)"
+    >
       <figure>
         <img :src="country.flags.png" alt="" />
       </figure>
@@ -24,6 +29,14 @@ export default {
   props: {
     countries: {
       type: Array,
+    },
+  },
+  methods: {
+    showEnhancedDetail(country) {
+      this.$router.push({
+        name: "SingleCountryDetail",
+        params: { name: country },
+      });
     },
   },
 };
